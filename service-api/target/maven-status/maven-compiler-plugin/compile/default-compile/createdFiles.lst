@@ -1,0 +1,6 @@
+com\hexa\service\Service.class
+com\hexa\service\MethodType.class
+com\hexa\service\MockMapping.class
+com\hexa\service\ServiceResponse.class
+com\hexa\service\Status.class
+com\hexa\service\ServiceProvider.class

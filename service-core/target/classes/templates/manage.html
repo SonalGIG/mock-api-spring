@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AutoMock API</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div th:replace="header :: header">
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead class="blue-grey lighten-4">
+        <tr>
+            <th>#</th>
+            <th>Method Type</th>
+            <th>Endpoint</th>
+            <th>Status Code</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody th:each="stub, iter: ${stubs}" th:remove="tag">
+
+        <tr>
+            <th scope="row" th:text="${iter.index}+1">
+
+            </th>
+            <td th:text="${stub.methodType}">...</td>
+            <td th:text="${stub.url}">...</td>
+            <td th:text="${stub.status}">...</td>
+            <td>
+                <button class="btn btn-primary" th:onclick="'javascript:ondelete(\''+ ${stub.uuid} +'\');'"> Delete
+                </button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<th:block layout:fragment="script">
+    <script>
+        function ondelete(uuid){
+			$.ajax({
+				url : '/service/'+uuid,
+				method : 'DELETE',
+				success : function(data, textStatus, jqXHR) {
+					location.reload();
+				}
+			});
+        }
+
+    </script>
+</th:block>
+</body>
+</html>
