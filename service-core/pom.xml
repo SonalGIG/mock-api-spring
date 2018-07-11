@@ -51,7 +51,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <outputDirectory>../tmp/src/target</outputDirectory>
+                            <outputDirectory>${project.build.directory}/tmp/src/target</outputDirectory>
                         </configuration>
                     </plugin>
                     <plugin>
